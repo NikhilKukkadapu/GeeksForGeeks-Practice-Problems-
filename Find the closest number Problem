@@ -1,0 +1,41 @@
+class Solution {
+    public static int findClosest(int[] arr, int k) {
+        int n = arr.length;
+
+        // Boundary cases
+        if (k <= arr[0]) {
+            return arr[0];
+        }
+        if (k >= arr[n - 1]) {
+            return arr[n - 1];
+        }
+
+        int low = 0;
+        int high = n - 1;
+
+        while (low <= high) {
+            int mid = low + (high - low) / 2;
+
+            if (arr[mid] == k) {
+                return arr[mid];
+            }
+
+            if (k < arr[mid]) {
+                high = mid - 1;
+            } else {
+                low = mid + 1;
+            }
+        }
+
+        // After the loop, k lies between arr[high] and arr[low]
+        int diff1 = Math.abs(arr[high] - k);
+        int diff2 = Math.abs(arr[low] - k);
+
+        // If differences are equal, return the larger value (arr[low])
+        if (diff2 <= diff1) {
+            return arr[low];
+        } else {
+            return arr[high];
+        }
+    }
+}
