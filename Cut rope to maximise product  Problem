@@ -1,0 +1,19 @@
+class Solution {
+    public int maxProduct(int n) {
+        // code here
+        // Base cases where mandatory cut reduces the optimal product
+        if (n == 2) return 1;
+        if (n == 3) return 2;
+
+        long maxProd = 1;
+
+        // Keep cutting pieces of length 3 until length is less than or equal to 4
+        while (n > 4) {
+            maxProd *= 3;
+            n -= 3;
+        }
+
+        // Multiply by the remaining length (which will be 2, 3, or 4)
+        return (int)maxProd * n;
+    }
+}
