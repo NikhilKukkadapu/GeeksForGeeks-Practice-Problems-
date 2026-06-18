@@ -1,0 +1,50 @@
+class Solution {
+    public int findCoverage(int[][] mat) {
+        // code here
+        int rows = mat.length;
+        int cols = mat[0].length;
+        int totalCoverage = 0;
+
+        for (int i = 0; i < rows; i++) {
+            for (int j = 0; j < cols; j++) {
+                // We only calculate coverage for cells containing 0
+                if (mat[i][j] == 0) {
+                    
+                    // 1. Check Left Direction
+                    for (int k = j - 1; k >= 0; k--) {
+                        if (mat[i][k] == 1) {
+                            totalCoverage++;
+                            break; // Found a 1, stop checking this direction
+                        }
+                    }
+
+                    // 2. Check Right Direction
+                    for (int k = j + 1; k < cols; k++) {
+                        if (mat[i][k] == 1) {
+                            totalCoverage++;
+                            break;
+                        }
+                    }
+
+                    // 3. Check Up Direction
+                    for (int k = i - 1; k >= 0; k--) {
+                        if (mat[k][j] == 1) {
+                            totalCoverage++;
+                            break;
+                        }
+                    }
+
+                    // 4. Check Down Direction
+                    for (int k = i + 1; k < rows; k++) {
+                        if (mat[k][j] == 1) {
+                            totalCoverage++;
+                            break;
+                        }
+                    }
+                }
+            }
+        }
+
+        return totalCoverage;
+    }
+}
