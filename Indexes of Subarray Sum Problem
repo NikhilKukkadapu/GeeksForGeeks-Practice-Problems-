@@ -1,0 +1,30 @@
+
+class Solution {
+    static ArrayList<Integer> subarraySum(int[] arr, int target) {
+        // code here
+        ArrayList<Integer> result = new ArrayList<>();
+        int left = 0;
+        int currentSum = 0;
+
+        for (int right = 0; right < arr.length; right++) {
+            currentSum += arr[right];
+
+            // Shrink the window from the left as long as currentSum exceeds target
+            while (currentSum > target && left < right) {
+                currentSum -= arr[left];
+                left++;
+            }
+
+            // Check if we found a subarray matching the target
+            if (currentSum == target) {
+                result.add(left + 1); // 1-based index
+                result.add(right + 1); // 1-based index
+                return result;
+            }
+        }
+
+        // Return [-1] if no such subarray is found
+        result.add(-1);
+        return result;
+    }
+}
