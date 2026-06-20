@@ -1,0 +1,36 @@
+class Solution {
+    public int getLastDigit(String a, String b) {
+        // code here
+        // Base case: Any number to the power of 0 is 1
+        if (b.equals("0")) {
+            return 1;
+        }
+        
+        // Base case: 0 to any non-zero power is 0
+        if (a.equals("0")) {
+            return 0;
+        }
+
+        // Get the last digit of base 'a'
+        int lastDigitA = a.charAt(a.length() - 1) - '0';
+
+        // Calculate b % 4 using the last two digits of 'b'
+        int exp = 0;
+        if (b.length() == 1) {
+            exp = (b.charAt(0) - '0') % 4;
+        } else {
+            int lastDigitB = b.charAt(b.length() - 1) - '0';
+            int secondLastDigitB = b.charAt(b.length() - 2) - '0';
+            exp = (secondLastDigitB * 10 + lastDigitB) % 4;
+        }
+
+        // If exponent % 4 is 0, the effective cycle position is 4
+        if (exp == 0) {
+            exp = 4;
+        }
+
+        // Calculate last digit of (lastDigitA ^ exp)
+        int result = (int) Math.pow(lastDigitA, exp);
+        return result % 10;
+    }
+}
