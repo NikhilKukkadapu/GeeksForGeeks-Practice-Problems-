@@ -1,0 +1,48 @@
+class Solution {
+
+    int countPairs(int arr[], int target) {
+        // Complete the function
+        int count = 0;
+        int left = 0;
+        int right = arr.length - 1;
+
+        while (left < right) {
+            int sum = arr[left] + arr[right];
+
+            if (sum < target) {
+                left++;
+            } else if (sum > target) {
+                right--;
+            } else {
+                // When we find a pair that matches the target
+                int element1 = arr[left];
+                int element2 = arr[right];
+
+                // If elements at both pointers are the same
+                if (element1 == element2) {
+                    int n = (right - left) + 1;
+                    count += (n * (n - 1)) / 2;
+                    break; // All pairs are accounted for
+                } else {
+                    // Count frequency of element1 from the left
+                    int count1 = 0;
+                    while (left <= right && arr[left] == element1) {
+                        count1++;
+                        left++;
+                    }
+
+                    // Count frequency of element2 from the right
+                    int count2 = 0;
+                    while (left <= right && arr[right] == element2) {
+                        count2++;
+                        right--;
+                    }
+
+                    // Multiply frequencies to get combinations
+                    count += (count1 * count2);
+                }
+            }
+        }
+        return count;
+    }
+}
