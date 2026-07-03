@@ -1,0 +1,32 @@
+class Solution {
+    public int maxConsecBits(int[] arr) {
+        // code here
+        int a=0, b=0;
+        int n = arr.length;
+        int max_count1 = 0;
+        int current_count1 = 0;
+        int max_count0 = 0;
+        int current_count0 = 0;
+        for(int j = 0 ; j < n ; j++){
+            if(arr[j] == 1){
+                current_count1++;
+            }
+            else{
+                max_count1 = Math.max(max_count1, current_count1);
+                current_count1 = 0;
+            }
+            
+            if(arr[j] == 0){
+                current_count0++;
+            }
+            else{
+                max_count0 = Math.max(max_count0, current_count0);
+                current_count0 = 0;
+            
+            }
+        }
+        a =  Math.max(max_count1,current_count1);
+        b =  Math.max(max_count0,current_count0);
+        return Math.max(a,b);
+    }
+}
