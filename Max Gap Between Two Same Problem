@@ -1,0 +1,30 @@
+class Solution {
+    public int maxCharGap(String s) {
+        // code here
+        int maxGap = -1;
+        // Array to store the first occurrence index of each character ('a' to 'z')
+        int[] firstIndex = new int[26];
+        
+        // Initialize all positions with -1 to indicate they haven't been seen yet
+        for (int i = 0; i < 26; i++) {
+            firstIndex[i] = -1;
+        }
+        
+        // Traverse the string
+        for (int i = 0; i < s.length(); i++) {
+            char ch = s.charAt(i);
+            int charIdx = ch - 'a'; // Map character to 0-25 index
+            
+            if (firstIndex[charIdx] == -1) {
+                // Store the first occurrence index
+                firstIndex[charIdx] = i;
+            } else {
+                // Calculate the gap and update maxGap if it's larger
+                int currentGap = i - firstIndex[charIdx] - 1;
+                maxGap = Math.max(maxGap, currentGap);
+            }
+        }
+        
+        return maxGap;
+    }
+}
