@@ -1,0 +1,15 @@
+class Solution {
+    public boolean areDisjoint(int[] a, int[] b) {
+        // code here
+        HashSet<Integer> map = new HashSet<>();
+        for(int num : a){
+            map.add(num);
+        }
+        for(int num : b){
+            if(map.contains(num)){
+                return false;
+            }
+        }
+        return true;
+    }
+}
