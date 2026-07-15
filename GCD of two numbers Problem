@@ -1,0 +1,8 @@
+import java.math.BigInteger;
+class Solution {
+    public static int gcd(int a, int b) {
+        // code here
+        int gcd = BigInteger.valueOf(a).gcd(BigInteger.valueOf(b)).intValue();
+        return gcd;
+    }
+}
