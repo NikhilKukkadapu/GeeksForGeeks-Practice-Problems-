@@ -1,0 +1,7 @@
+class Solution {
+    public boolean alternateBits(int n) {
+        // code here
+        n = n ^ (n >> 1);
+        return (n & (n + 1)) == 0;
+    }
+}
