@@ -1,0 +1,28 @@
+// class Solution {
+//     static int largestPrimeFactor(int n) {
+//         // code here
+//         ArrayList<Integer> arr = new ArrayList<>();
+//         for(int  i = 2 ; i <= n ; i++){
+//             if(n % i == 0){
+//                 arr.add(i);
+//             }
+//         }
+//         int large = arr.get(arr.size()-1);
+//         return large;
+//     }
+// }
+class Solution {
+	static int largestPrimeFactor(int n) {
+		// code here
+		int i = 2;
+		while (n >= i) {
+			if (n%i == 0) {
+				n /= i;
+			}
+			else {
+				i++;
+			}
+		}
+		return i;
+	}
+}
