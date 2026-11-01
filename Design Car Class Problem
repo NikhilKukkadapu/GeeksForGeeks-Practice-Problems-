@@ -1,0 +1,63 @@
+You are tasked with designing a basic Vehicle Information System. As part of this system, you need to create a class named Car that represents a car with the following properties:
+
+- brand (string): the brand name of the car
+- model (string): the model name of the car
+- year (int): the manufacturing year of the car
+
+You need to implement the following :
+
+Constructor to initialize these properties when a new object is created. 
+A method named displayDetails() that prints all the details of the car in the following format:
+Car Details:
+Brand: <brand>
+Model: <model>
+Year: <year>
+Examples:
+
+Input: brand = "Ford", model = "Mustang", year = 1969
+Output:
+Car Details:
+Brand: Ford
+Model: Mustang
+Year: 1969
+Input: brand = "Toyota", model = "Camry", year = 2020
+Output:
+Car Details:
+Brand: Toyota
+Model: Camry
+Year: 2020
+
+//Code:
+
+class Car {
+	// Define the properties brand, model and year
+	
+	String brand ;
+	String model;
+	int year;
+	// Constructor
+	public Car(String b, String m, int y) {
+		// Initialize brand, model, and year
+		this.brand = b;
+		this.model = m;
+		this.year = y;
+	}
+	
+	// Method to display details
+	public void displayDetails() {
+		// Print car details in the specified format
+		System.out.println("Car Details:");
+		System.out.println("Brand: " + brand);
+		System.out.println("Model: " + model);
+		System.out.println("Year: " + year);
+	}
+}
+
+class Solution {
+	public void fun(String brand, String model, int year) {
+		
+		// Create Car class and call displayDetails() method
+		Car car = new Car(brand, model, year);
+		car.displayDetails();
+	}
+}
