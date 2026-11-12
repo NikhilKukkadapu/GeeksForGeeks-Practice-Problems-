@@ -1,0 +1,19 @@
+Given two positive integers a and b. Implement a lambda expression to compute their sum. Complete the function helperFunction() which takes no arguments and returns an instance implementing the functional interface Add.
+
+The interface Add contains a member function addParameters(int a, int b). Implement addParameters inside helperFunction() using a lambda expression to return the sum of the two integers, and return the interface instance.
+The driver code invokes addParameters(a, b) using the returned object and prints the result.
+Examples :  
+
+Input: a = 5, b = 7
+Output: 12
+Explanation: The sum of 5 and 7 is 12.
+Input: a = 1, b = 5
+Output: 6
+Explanation: The sum of 1 and 5 is 6.
+//Code:
+class Solution {
+	public Add helperFunction() {
+		// code here
+		return(a,b)->a+b;
+	}
+}
