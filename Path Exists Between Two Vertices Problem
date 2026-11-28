@@ -1,0 +1,47 @@
+Given an undirected graph with V vertices numbered from 0 to V - 1, represented by an adjacency list adj[][], where adj[i] contains all vertices adjacent to vertex i. Also given two vertices u and v, check whether a path exists between them.
+
+Return true if a path exists, otherwise return false.
+
+Examples:
+
+
+Input: adj[][] = [[2, 3], [2], [0, 1], [0], [5], [4]], u = 1, v = 5
+420046859
+Output: false
+Explanation: There is no path from vertex 1 to vertex 5.
+Input: adj[][] = [[2, 3], [2], [0, 1], [0], [5], [4]], u = 2, v = 3
+420046859
+Output: true
+Explanation: We can reach vertex 3 from vertex 2 via vertex 0.
+1
+
+//Code:
+
+class Solution {
+  public boolean checkPath(ArrayList<ArrayList<Integer>> adj, int u, int v) {
+    // code here
+    int n = adj.size();
+
+    boolean[] visited = new boolean[n];
+    boolean ans = dfs(adj, u, v, visited);
+
+    return ans;
+  }
+
+  private boolean dfs(ArrayList<ArrayList<Integer>> adj, int curr, int v,
+                      boolean[] visited) {
+    if (curr == v) {
+      return true;
+    }
+
+    visited[curr] = true;
+    for (int neighbor : adj.get(curr)) {
+      if (!visited[neighbor]) {
+        if (dfs(adj, neighbor, v, visited))
+          return true;
+      }
+    }
+
+    return false;
+  }
+}
